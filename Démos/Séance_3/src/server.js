@@ -8,7 +8,7 @@ const sensor = new Sensor("temp-b127", { min: 18, max: 32 });
 sensor.on("measure", (measure) => measures.push(measure));
 sensor.start();
 
-
+// Create Server with nodejs http module
 const server = http.createServer(async (req, res) => {
     const url = new URL(req.url, `http://${req.headers.host}`);
 
