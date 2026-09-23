@@ -4,7 +4,7 @@ import { sendJson } from "./sendJson.js";
 import { readFile } from "fs/promises";
 
 const measures = [];
-const sensor = new Sensor("temp-b127", {min: 18, max: 32});
+const sensor = new Sensor("temp-b127", { min: 18, max: 32 });
 sensor.on("measure", (measure) => measures.push(measure));
 sensor.start();
 
@@ -31,7 +31,7 @@ const server = http.createServer(async (req, res) => {
         const css = await readFile("src/public/style.css", "utf-8");
         res.writeHead(200, { "Content-Type": "text/css" });
         return res.end(css);
-    }     
+    }
     if (req.method === "POST" && url.pathname === "/api/measures") {
         let body = "";
         let chunks = 0;
@@ -46,13 +46,13 @@ const server = http.createServer(async (req, res) => {
                 const received = JSON.parse(body);
 
                 if (typeof received.value !== "number") {
-                return sendJson(res, 400, { error: "value doit etre un nombre" });
+                    return sendJson(res, 400, { error: "value doit etre un nombre" });
                 }
 
                 const measure = {
-                sensor: received.sensor ?? sensor.id,
-                value: received.value,
-                createdAt: new Date().toISOString(),
+                    sensor: received.sensor ?? sensor.id,
+                    value: received.value,
+                    createdAt: new Date().toISOString(),
                 };
 
                 measures.push(measure);
@@ -61,10 +61,10 @@ const server = http.createServer(async (req, res) => {
                 sendJson(res, 400, { error: "JSON malforme" });
             }
         });
-    return;
-  }
+        return;
+    }
 
-    sendJson(res, 404, {error: "Ressource introuvable"});
+    sendJson(res, 404, { error: "Ressource introuvable" });
 });
 
 server.listen(3000, () => console.log("http://localhost:3000"));

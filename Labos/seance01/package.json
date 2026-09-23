@@ -1,0 +1,18 @@
+{
+  "name": "seance01",
+  "version": "1.0.0",
+  "description": "Projet de session : système de supervision et de monitorage.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "node docs/index.js",
+    "dev": "nodemon --ignore data/ docs/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}
