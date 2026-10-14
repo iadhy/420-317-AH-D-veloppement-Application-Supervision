@@ -6,6 +6,10 @@ import { Monitor } from "./monitor.js";
 import SensorModel from "./models/sensor.model.js";
 import * as measureService from "./services/measure.service.js";
 
+import dns from "dns";
+
+dns.setServers(["8.8.8.8"]);
+
 await connectDatabase();
 
 // Depuis la seance 7, on ne cree plus le capteur automatiquement ici :

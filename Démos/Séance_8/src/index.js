@@ -3,6 +3,9 @@ import app from "./app.js";
 import { connectDatabase } from "./config/db.js";
 import { Sensor } from "./sensor.js";
 import * as measureService from "./services/measure.service.js";
+import dns from "dns";
+
+dns.setServers(["8.8.8.8"]);
 
 await connectDatabase();
 
