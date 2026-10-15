@@ -1,0 +1,27 @@
+body { font-family: system-ui, sans-serif; margin: 3rem; color: #222; }
+h1 { color: #8a3324; }
+label { margin-right: 0.75rem; }
+input[type="number"] { width: 5rem; }
+.error { color: #b3261e; min-height: 1.2em; }
+
+#sensor-form fieldset { border: 1px solid #bbb; border-radius: 6px; }
+#message { min-height: 1.2em; }
+#message.error { color: #b3261e; }
+
+#sensors { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1rem; }
+article { border: 1px solid #bbb; border-radius: 6px; padding: 0.75rem; }
+article.alert { border-color: #b3261e; background: #fdecea; }
+article h2 { margin: 0 0 0.25rem; font-size: 1.1rem; }
+.value { font-size: 2.5rem; margin: 0; }
+.state { margin: 0 0 0.5rem; font-weight: bold; color: #2e7d32; }
+article.alert .state { color: #b3261e; }
+.chart-area { position: relative; height: 160px; }
+.stats { margin: 0 0 0.5rem; font-size: 0.9rem; }
+.card-error { margin: 0.25rem 0; font-size: 0.9rem; color: #b3261e; min-height: 1.1em; }
+.filter { margin: 0.5rem 0; font-size: 0.9rem; }
+.filter input { width: 4.5rem; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+td, th { padding: 0.15rem 0.4rem; text-align: left; border-bottom: 1px solid #eee; }
+thead button { border: 0; background: none; font-weight: bold; cursor: pointer; padding: 0; }
+#status.ok { color: #2e7d32; }
+#status.ko { color: #b3261e; }

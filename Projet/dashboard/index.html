@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Supervision</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>Supervision</h1>
+
+  <!-- Ecran de connexion : rien d'autre n'est visible tant qu'on n'est pas connecte. -->
+  <section id="login">
+    <form id="login-form">
+      <label>Courriel <input id="email" type="email" required></label>
+      <label>Mot de passe <input id="password" type="password" required></label>
+      <button type="submit">Se connecter</button>
+    </form>
+    <p id="login-error" class="error" role="alert"></p>
+  </section>
+
+  <section id="dashboard" hidden>
+    <p>Connexion : <span id="status">Connexion...</span>
+       | <span id="user"></span>
+       <button id="logout" type="button">Quitter</button></p>
+
+    <!-- Visible seulement pour operator et admin (voir dashboard.js). -->
+    <form id="sensor-form" hidden>
+      <fieldset>
+        <legend>Nouveau capteur</legend>
+        <label>Identifiant <input id="sensor-id" required pattern="[a-zA-Z0-9_\-]+" title="Lettres, chiffres, tirets et underscores"></label>
+        <label>Nom <input id="sensor-name" required></label>
+        <label>Unite <input id="sensor-unit" required size="4"></label>
+        <label>Min <input id="sensor-min" type="number" step="any" required></label>
+        <label>Max <input id="sensor-max" type="number" step="any" required></label>
+        <label>Seuil <input id="sensor-threshold" type="number" step="any" required></label>
+        <label>Direction
+          <select id="sensor-direction">
+            <option value="above">au-dessus</option>
+            <option value="below">en dessous</option>
+          </select>
+        </label>
+        <button type="submit">Creer</button>
+      </fieldset>
+      <p id="sensor-form-error" class="error" role="alert"></p>
+    </form>
+
+    <p id="message" role="status"></p>
+    <p id="empty" hidden>Aucun capteur actif.</p>
+    <div id="sensors"></div>
+  </section>
+
+  <!-- Chart.js et Socket.IO viennent de NOTRE serveur : helmet refuse les CDN et les scripts ecrits dans la page. -->
+  <script src="/vendor/chart.umd.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="/dashboard.js"></script>
+</body>
+</html>
